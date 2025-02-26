@@ -1,30 +1,29 @@
 package com.example.project.Selection_Sort;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.IOException;
+
+
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
 
 public class SelectionSort {
-
-    // PART A. implementing selection sort
     public static int[] selectionSort(int[] elements) {
-        for (int j = 0; j < elements.length - 1; j++) {
-            int minIndex = j;
-            for (int k = j + 1; k < elements.length; k++) {
-                if (elements[k] < elements[minIndex]) {
-                    minIndex = k;
+        int[] sortedList = new int[elements.length];
+        for (int i = 0; i < elements.length; i++) {
+            int minIndex = -1;
+            for (int j = 0; j < elements.length; j++) {
+                if (elements[j] != Integer.MAX_VALUE && (minIndex == -1 || elements[j] < elements[minIndex])) {
+                    minIndex = j;
                 }
             }
-            int temp = elements[j];
-            elements[j] = elements[minIndex];
-            elements[minIndex] = temp;
+            sortedList[i] = elements[minIndex];
+            elements[minIndex] = Integer.MAX_VALUE;
         }
-
-        return elements;
+        return sortedList;
     }
 
-
-    // PART B. sorting a 1000-word list
     public static ArrayList<String> selectionSortWordList(ArrayList<String> words) {
         for (int j = 0; j < words.size() - 1; j++) {
             int minIndex = j;
@@ -43,14 +42,19 @@ public class SelectionSort {
     //call this method to load 1000 words into list. Use it to test Part B
     public static ArrayList<String> loadWordsInto(ArrayList<String> wordList) {
         try {
-            Scanner input = new Scanner(new File("src/main/java/com/example/project/Selection_Sort/words.txt"));
-            while (input.hasNext()) {
-                String word = input.next();
+            Scanner scan = new Scanner(new File("src/main/java/com/example/project/Selection_Sort/words.txt"));
+            while (scan.hasNext()) {
+                String word = scan.next();
                 wordList.add(word);
             }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        } catch (IOException aException) {
+            System.out.println(aException.getMessage());
         }
         return wordList;
+    }
+    public static void main(String[] args) {
+        int[] list = {1, 3, 7, 5, 3, 5, 6, 2, 5, 7, 2, 5, 7, 9};
+        int[] sortedList = selectionSort(list);
+        System.out.println(Arrays.toString(sortedList));
     }
 }
