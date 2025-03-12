@@ -1,4 +1,4 @@
-package com.example.project.Insertion_Sort;
+package com.example.project;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.ArrayList;

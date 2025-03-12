@@ -1,4 +1,4 @@
-package com.example.project.Selection_Sort;
+package com.example.project;
 
 
 import java.io.File;
@@ -42,7 +42,7 @@ public class SelectionSort {
     //call this method to load 1000 words into list. Use it to test Part B
     public static ArrayList<String> loadWordsInto(ArrayList<String> wordList) {
         try {
-            Scanner scan = new Scanner(new File("src/main/java/com/example/project/Selection_Sort/words.txt"));
+            Scanner scan = new Scanner(new File("src/main/java/com/example/project/words.txt"));
             while (scan.hasNext()) {
                 String word = scan.next();
                 wordList.add(word);
